@@ -138,14 +138,16 @@ public class MS_Full_OpMode extends OpMode
 
         // Raise linear slide if right bumper is held down
         if (gamepad1.right_bumper) {
-            raiseSlide.setPower(3);
+            raiseSlide.setPower(1);
         } else {
-            raiseSlide.setPower(0.2);
+            raiseSlide.setPower(0);
         }
 
         // Lower linear slide if B button is pressed down
         if (gamepad1.b) {
-            raiseSlide.setPower(-0.5);
+            raiseSlide.setPower(-1);
+        } else {
+            raiseSlide.setPower(0);
         }
 
         // Move latch servos to starting position
@@ -176,10 +178,6 @@ public class MS_Full_OpMode extends OpMode
         }
         if (gamepad1.left_trigger > 0) {
             latchSecure.setPosition(0.8);
-        }
-
-        if (gamepad1.dpad_down) {
-            raiseSlide.setPower(0);
         }
 
         // Show the elapsed game time and wheel power.
