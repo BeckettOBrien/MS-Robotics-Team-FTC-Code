@@ -182,14 +182,14 @@ public class MS_Full_OpMode extends OpMode
             latchSecure.setPosition(0.8);
         }
 
-        //Lock Linear Slide
+        //Unlock Linear Slide
         if (gamepad1.x) {
-            slideLock.setPosition(0.8);
+            slideLock.setPosition(0.2);
         }
 
-        //Unlock Linear Slide
+        //lock Linear Slide
         if (gamepad1.y) {
-            slideLock.setPosition(0.6);
+            slideLock.setPosition(0);
         }
 
         // Show the elapsed game time and wheel power.
