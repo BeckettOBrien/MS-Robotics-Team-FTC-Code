@@ -179,7 +179,7 @@ public class MS_Full_OpMode extends OpMode
             latchBar.setPosition(0.95);
         }
         if (gamepad1.left_trigger > 0) {
-            latchSecure.setPosition(0.8);
+            latchSecure.setPosition(0.6);
         }
 
         //Unlock Linear Slide
