@@ -90,25 +90,30 @@ public class MS_Auto_Crater extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         if (opModeIsActive()) {
-            raiseSlide.setPower(3);
-            sleep(800);
-            raiseSlide.setPower(0.2);
-            latchSecure.setPosition(0);
-            sleep(600);
-            latchBar.setPosition(0);
-            sleep(200);
-            raiseSlide.setDirection(DcMotor.Direction.REVERSE);
-            raiseSlide.setPower(0.5);
-            sleep(500);
-            raiseSlide.setPower(0);
-            raiseSlide.setDirection(DcMotor.Direction.FORWARD);
-            leftDrive.setPower(1);
-            rightDrive.setPower(1);
-            sleep(600);
-            leftDrive.setPower(0);
-            rightDrive.setPower(0);
-            telemetry.addLine("Autonomous Finished!");
-            telemetry.update();
+//            raiseSlide.setPower(3);
+//            sleep(800);
+//            raiseSlide.setPower(0.2);
+//            latchSecure.setPosition(0);
+//            sleep(600);
+//            latchBar.setPosition(0);
+//            sleep(200);
+//            raiseSlide.setDirection(DcMotor.Direction.REVERSE);
+//            raiseSlide.setPower(0.5);
+//            sleep(500);
+//            raiseSlide.setPower(0);
+//            raiseSlide.setDirection(DcMotor.Direction.FORWARD);
+//            leftDrive.setPower(1);
+//            rightDrive.setPower(1);
+//            sleep(600);
+//            leftDrive.setPower(0);
+//            rightDrive.setPower(0);
+//            telemetry.addLine("Autonomous Finished!");
+//            telemetry.update();
+              leftDrive.setPower(-1);
+              rightDrive.setPower(-1);
+              sleep(1250);
+              leftDrive.setPower(0);
+              rightDrive.setPower(0);
         }
     }
 }
