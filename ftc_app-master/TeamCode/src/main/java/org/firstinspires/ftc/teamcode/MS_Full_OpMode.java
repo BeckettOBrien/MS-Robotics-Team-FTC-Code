@@ -62,9 +62,7 @@ public class MS_Full_OpMode extends OpMode
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
     private DcMotor raiseSlide;
-    private Servo latchBar;
-    private Servo latchSecure;
-    private Servo slideLock;
+    private Servo stopSlide;
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -79,9 +77,7 @@ public class MS_Full_OpMode extends OpMode
         leftDrive  = hardwareMap.get(DcMotor.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
         raiseSlide = hardwareMap.get(DcMotor.class, "raiseSlide");
-        latchBar = hardwareMap.get(Servo.class, "latchBar");
-        latchSecure = hardwareMap.get(Servo.class, "latchSecure");
-        slideLock = hardwareMap.get(Servo.class, "slideLock");
+        stopSlide = hardwareMap.get(Servo.class, "stopSlide");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -152,44 +148,14 @@ public class MS_Full_OpMode extends OpMode
             raiseSlide.setPower(0);
         }
 
-        // Move latch servos to starting position
-        if (gamepad1.left_bumper) {
-            if (latchSecure.getPosition() != 0) {
-                latchSecure.setPosition(0);
-                try {
-                    sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (latchBar.getPosition() != 0) {
-                latchBar.setPosition(0);
-            }
-            telemetry.addData("Latch Position", "Starting");
-        }
-
-        // Move latch servos closed
-        if (gamepad1.right_trigger > 0) {
-            latchSecure.setPosition(0);
-            try {
-                sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            latchBar.setPosition(0.95);
-        }
-        if (gamepad1.left_trigger > 0) {
-            latchSecure.setPosition(0.6);
-        }
-
         //Unlock Linear Slide
         if (gamepad1.x) {
-            slideLock.setPosition(0.2);
+            stopSlide.setPosition(0.3);
         }
 
         //lock Linear Slide
         if (gamepad1.y) {
-            slideLock.setPosition(0);
+            stopSlide.setPosition(0.1);
         }
 
         // Show the elapsed game time and wheel power.

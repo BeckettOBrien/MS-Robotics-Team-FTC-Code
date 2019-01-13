@@ -31,12 +31,9 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
 
 /**
@@ -52,17 +49,16 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="MS Auto Crater", group="Linear Opmode")
+@TeleOp(name="MS Auto Unlatch", group="Linear Opmode")
 //@Disabled
-public class MS_Auto_Crater extends LinearOpMode {
+public class MS_Auto_Unlatch extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
     private DcMotor raiseSlide;
-    private Servo latchBar;
-    private Servo latchSecure;
+    private Servo stopSlide;
 
     @Override
     public void runOpMode() {
@@ -75,6 +71,7 @@ public class MS_Auto_Crater extends LinearOpMode {
         leftDrive  = hardwareMap.get(DcMotor.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
         raiseSlide = hardwareMap.get(DcMotor.class, "raiseSlide");
+        stopSlide = hardwareMap.get(Servo.class, "stopSlide");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -88,28 +85,18 @@ public class MS_Auto_Crater extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         if (opModeIsActive()) {
-//            raiseSlide.setPower(3);
-//            sleep(800);
-//            raiseSlide.setPower(0.2);
-//            latchSecure.setPosition(0);
-//            sleep(600);
-//            latchBar.setPosition(0);
-//            sleep(200);
-//            raiseSlide.setDirection(DcMotor.Direction.REVERSE);
-//            raiseSlide.setPower(0.5);
-//            sleep(500);
-//            raiseSlide.setPower(0);
-//            raiseSlide.setDirection(DcMotor.Direction.FORWARD);
-//            leftDrive.setPower(1);
-//            rightDrive.setPower(1);
-//            sleep(600);
-//            leftDrive.setPower(0);
-//            rightDrive.setPower(0);
-//            telemetry.addLine("Autonomous Finished!");
-//            telemetry.update();
+              raiseSlide.setPower(1);
+              sleep(11000);
+              leftDrive.setPower(-1);
+              sleep(300);
+              leftDrive.setPower(0);
+              rightDrive.setPower(-1);
+              sleep(300);
+              rightDrive.setPower(0);
+              sleep(500);
               leftDrive.setPower(-1);
               rightDrive.setPower(-1);
-              sleep(1200);
+              sleep(1250);
               leftDrive.setPower(0);
               rightDrive.setPower(0);
         }
