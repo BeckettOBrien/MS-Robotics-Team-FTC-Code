@@ -62,7 +62,7 @@ public class MS_Full_OpMode extends OpMode
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
     private DcMotor raiseSlide;
-    private Servo stopSlide;
+    private Servo latchServo;
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -77,7 +77,7 @@ public class MS_Full_OpMode extends OpMode
         leftDrive  = hardwareMap.get(DcMotor.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
         raiseSlide = hardwareMap.get(DcMotor.class, "raiseSlide");
-        stopSlide = hardwareMap.get(Servo.class, "stopSlide");
+        latchServo = hardwareMap.get(Servo.class, "latchServo");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -150,12 +150,12 @@ public class MS_Full_OpMode extends OpMode
 
         //Unlock Linear Slide
         if (gamepad1.x) {
-            stopSlide.setPosition(0.3);
+            latchServo.setPosition(0.3);
         }
 
         //lock Linear Slide
         if (gamepad1.y) {
-            stopSlide.setPosition(0.1);
+            latchServo.setPosition(0);
         }
 
         // Show the elapsed game time and wheel power.

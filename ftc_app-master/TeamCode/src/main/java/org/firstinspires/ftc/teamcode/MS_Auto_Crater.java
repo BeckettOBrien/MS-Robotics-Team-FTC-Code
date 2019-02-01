@@ -61,8 +61,6 @@ public class MS_Auto_Crater extends LinearOpMode {
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
     private DcMotor raiseSlide;
-    private Servo latchBar;
-    private Servo latchSecure;
 
     @Override
     public void runOpMode() {

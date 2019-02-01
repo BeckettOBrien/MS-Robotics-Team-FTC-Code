@@ -58,7 +58,7 @@ public class MS_Auto_Unlatch extends LinearOpMode {
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
     private DcMotor raiseSlide;
-    private Servo stopSlide;
+    private Servo latchServo;
 
     @Override
     public void runOpMode() {
@@ -71,7 +71,7 @@ public class MS_Auto_Unlatch extends LinearOpMode {
         leftDrive  = hardwareMap.get(DcMotor.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
         raiseSlide = hardwareMap.get(DcMotor.class, "raiseSlide");
-        stopSlide = hardwareMap.get(Servo.class, "stopSlide");
+        latchServo = hardwareMap.get(Servo.class, "latchServo");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -87,18 +87,8 @@ public class MS_Auto_Unlatch extends LinearOpMode {
         if (opModeIsActive()) {
               raiseSlide.setPower(1);
               sleep(11000);
-              leftDrive.setPower(-1);
-              sleep(300);
-              leftDrive.setPower(0);
-              rightDrive.setPower(-1);
-              sleep(300);
-              rightDrive.setPower(0);
-              sleep(500);
-              leftDrive.setPower(-1);
-              rightDrive.setPower(-1);
-              sleep(1250);
-              leftDrive.setPower(0);
-              rightDrive.setPower(0);
+              raiseSlide.setPower(0);
+              latchServo.setPosition(0.3);
         }
     }
 }
