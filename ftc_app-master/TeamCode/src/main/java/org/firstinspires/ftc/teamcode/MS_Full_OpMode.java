@@ -89,12 +89,12 @@ public class MS_Full_OpMode extends OpMode
             raiseSlide.setPower(0);
         }
 
-        //Unlock Linear Slide
+        //Unlock Linear Slide if X button is pressed
         if (gamepad1.x) {
             latchServo.setPosition(0.3);
         }
 
-        //lock Linear Slide
+        //lock Linear Slide if Y button is pressed
         if (gamepad1.y) {
             latchServo.setPosition(0);
         }
